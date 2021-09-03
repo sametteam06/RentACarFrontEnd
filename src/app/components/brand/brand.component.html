@@ -1,0 +1,22 @@
+<table class = "table">
+    <thead>
+        <tr>
+            <th>Marka</th>
+        </tr>
+    </thead>
+    <div *ngIf="dataLoaded==false" class="spinner-grow text-secondary" role="status">
+        <span class="visually-hidden" >Loading...</span>
+    </div>
+    <tr class = "tr" >
+        <td class = "td">
+            <li 
+                (click)="setCurrentBrand(brand)" 
+                routerLink = "cars/brand/{{brand.id}}"
+                *ngFor= "let brand of brands"
+                [class]="getCurrentBrandClass(brand)">
+                {{brand.brandName}}
+            </li>
+        </td>
+    </tr>
+</table>
+<h5 *ngIf = "currentBrand">{{currentBrand.brandName}} seçtiniz</h5>

@@ -1,0 +1,15 @@
+<table class = "table">
+    <thead>
+        <tr>
+            <th>Kullanıcı Id</th>
+            <th>Şirket Adı</th>
+        </tr>
+    </thead>
+    <div *ngIf="dataLoaded==false" class="spinner-grow text-secondary" role="status">
+        <span class="visually-hidden" >Loading...</span>
+    </div>
+    <tr class = "tr" *ngFor= "let customer of customers">
+        <td class = "td"><li class="list-group-item">{{customer.userId}}</li></td>
+        <td class = "td"><li class="list-group-item">{{customer.companyName}}</li></td>
+    </tr>
+</table>

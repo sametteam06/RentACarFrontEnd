@@ -1,0 +1,24 @@
+<app-car-image></app-car-image>
+<table class = "table">
+  <thead>
+      <tr>
+          <th>Car Id</th>
+          <th>Car Name</th>
+          <th>Brand Name</th>
+          <th>Color Name</th>
+          <th>Daily Price</th>
+      </tr>
+  </thead>
+  <div *ngIf="dataLoaded==false" class="spinner-grow text-secondary" role="status">
+      <span class="visually-hidden" >Loading...</span>
+  </div>
+  <tr class = "tr">
+      <td class = "td"><li class="list-group-item">{{cardetail?.carId}}</li></td>
+      <td class = "td"><li class="list-group-item">{{cardetail?.carName}}</li></td>
+      <td class = "td"><li class="list-group-item">{{cardetail?.brandName}}</li></td>
+      <td class = "td"><li class="list-group-item">{{cardetail?.colorName}}</li></td>
+      <td class = "td"><li class="list-group-item">{{cardetail?.dailyPrice}}</li></td>
+  </tr>
+</table>
+
+
