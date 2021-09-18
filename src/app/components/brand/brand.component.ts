@@ -13,6 +13,7 @@ export class BrandComponent implements OnInit {
   currentBrand : Brand;
   brand : Brand;
   dataLoaded = false;
+  brandFilterText = "";
 
 
   constructor(private brandService:BrandService) { }

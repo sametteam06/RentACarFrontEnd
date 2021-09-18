@@ -9,20 +9,23 @@
             <th>Günlük Ücret</th>
         </tr>
     </thead>
-    <div *ngIf="dataLoaded==false" class="spinner-grow text-secondary" role="status">
-        <span class="visually-hidden" >Loading...</span>
-    </div>
-    <tr 
-    (click)="setCurrentCar(car)" 
+    
+    <tr>
+        <div class="input-group mb-3">
+            <input type="text" [(ngModel)] = "carFilterText" class="form-control" placeholder="Araba Ara" aria-label="Username">
+        </div>
+    </tr>
+    <tbody 
     routerLink = "/cars/detail/{{car.id}}" 
     routerLinkActive="active"
-    *ngFor= "let car of cars">
+    *ngFor= "let car of cars | carFilter:carFilterText">
         <td class = "td"><li [class] = "getCurrentCarClass(car)">{{car.id}}</li></td>
         <td class = "td"><li [class] = "getCurrentCarClass(car)">{{car.brandId}}</li></td>
         <td class = "td"><li [class] = "getCurrentCarClass(car)">{{car.colorId}}</li></td>
         <td class = "td"><li [class] = "getCurrentCarClass(car)">{{car.modelYear}}</li></td>
         <td class = "td"><li [class] = "getCurrentCarClass(car)">{{car.description}}</li></td>
         <td class = "td"><li [class] = "getCurrentCarClass(car)">{{car.dailyPrice}}</li></td>
-    </tr>
+    </tbody>
 </table>
-<h5 *ngIf = "currentCar">{{currentCar.description}} seçtiniz</h5>
+
+<app-rental></app-rental>

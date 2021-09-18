@@ -7,6 +7,7 @@
           <th>Brand Name</th>
           <th>Color Name</th>
           <th>Daily Price</th>
+
       </tr>
   </thead>
   <div *ngIf="dataLoaded==false" class="spinner-grow text-secondary" role="status">
@@ -18,7 +19,11 @@
       <td class = "td"><li class="list-group-item">{{cardetail?.brandName}}</li></td>
       <td class = "td"><li class="list-group-item">{{cardetail?.colorName}}</li></td>
       <td class = "td"><li class="list-group-item">{{cardetail?.dailyPrice}}</li></td>
+      <td class = "td"><li class="list-group-item"><span (click)="rentPage(cardetail.carId)"  class="badge bg-secondary">Kirala</span></li></td>
   </tr>
 </table>
 
+<div *ngIf="rent==true" class="row" role="status">
+    <app-rent></app-rent>
+</div>
 
