@@ -1,0 +1,73 @@
+<app-cardetail></app-cardetail>
+<div class = "content">
+    <div class = "col-md-12">
+        <div class = "card">
+            <div class = "card-header"><h5 class = "title">Araba Bilgilerini Güncelle</h5></div>
+            <div class = "card-body">
+                <form [formGroup] = "carUpdateForm">
+                    <div class = "mb-3">
+                        <label for = "brandId">Marka</label>
+                        <div class = "form-group">
+                            <select id = "brandId" formControlName = "brandId" class="form-select" aria-label="Default select example">
+                                <option value="" disabled selected hidden>Marka Seçiniz</option>
+                                <option  *ngFor ="let brand of brands" [ngValue] ="brand.id">{{brand.brandName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class = "mb-3">
+                        <label for = "displacementId">Motor Hacmi</label>
+                        <div class = "form-group">
+                            <select id = "displacementId" formControlName = "displacementId" class="form-select" aria-label="Default select example">
+                                <option value="" disabled selected hidden>Motor Hacmi Seçiniz</option>
+                                <option   *ngFor ="let displacement of displacements" [ngValue] ="displacement.id">{{displacement.engineDisplacement}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class = "mb-3">
+                        <label for = "modelYear">Model</label>
+                        <div class = "form-group">
+                            <input type = "number"
+                            id = "modelYear"
+                            formControlName = "modelYear"
+                            class = "form-control"
+                            placeholder = "Araç Modelini Giriniz"/>
+                        </div>
+                    </div>
+                    <div class = "mb-3">
+                        <label for = "dailyPrice">Günlük Ücret</label>
+                        <div class = "form-group">
+                            <input type = "number"
+                            id = "dailyPrice"
+                            formControlName = "dailyPrice"
+                            class = "form-control"
+                            placeholder = "Günlük Kiralama Ücreti Giriniz"/>
+                        </div>
+                    </div>
+                    <div class = "mb-3">
+                        <label for = "minFindexPoint">Kiralama İçin Gerekli Findex Puanı</label>
+                        <div class = "form-group">
+                            <input type = "number"
+                            id = "minFindexPoint"
+                            formControlName = "minFindexPoint"
+                            class = "form-control"
+                            placeholder = "Kiralama İçin Gerekli Findex Puanı Giriniz"/>
+                        </div>
+                    </div>
+                    <div class = "mb-3">
+                        <label for = "description">Açıklama</label>
+                        <div class = "form-group">
+                            <input type = "text"
+                            id = "description"
+                            formControlName = "description"
+                            class = "form-control"
+                            placeholder = "Açıklama Giriniz"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class = "card-footer">
+                <button class = "btn btn-fill btn-primary" (click) = "updateCar()">Güncelle</button>
+            </div>
+        </div>
+    </div>
+</div>
