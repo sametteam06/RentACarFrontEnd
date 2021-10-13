@@ -1,31 +1,24 @@
+
 <table class = "table">
     <thead>
         <tr>
             <th>Id</th>
             <th>Marka Id</th>
-            <th>Renk Id</th>
+            <th>Displacement Id</th>
             <th>Model Yılı</th>
             <th>Açıklama</th>
             <th>Günlük Ücret</th>
         </tr>
     </thead>
-    
-    <tr>
-        <div class="input-group mb-3">
-            <input type="text" [(ngModel)] = "carFilterText" class="form-control" placeholder="Araba Ara" aria-label="Username">
-        </div>
-    </tr>
     <tbody 
     routerLink = "/cars/detail/{{car.id}}" 
     routerLinkActive="active"
-    *ngFor= "let car of cars | carFilter:carFilterText">
+    *ngFor= "let car of cars | orderBy:'dailyPrice'">
         <td class = "td"><li [class] = "getCurrentCarClass(car)">{{car.id}}</li></td>
         <td class = "td"><li [class] = "getCurrentCarClass(car)">{{car.brandId}}</li></td>
-        <td class = "td"><li [class] = "getCurrentCarClass(car)">{{car.colorId}}</li></td>
+        <td class = "td"><li [class] = "getCurrentCarClass(car)">{{car.displacementId}}</li></td>
         <td class = "td"><li [class] = "getCurrentCarClass(car)">{{car.modelYear}}</li></td>
         <td class = "td"><li [class] = "getCurrentCarClass(car)">{{car.description}}</li></td>
         <td class = "td"><li [class] = "getCurrentCarClass(car)">{{car.dailyPrice}}</li></td>
     </tbody>
 </table>
-
-<app-rental></app-rental>
