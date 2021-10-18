@@ -24,15 +24,13 @@ export class CarUpdateComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private toastrService:ToastrService, private carService:CarService, private brandService:BrandService, private displacementService:DisplacementService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getBrandName();
-    this.getDisplacement();
     this.createCarUpdateForm();
-    
     this.activatedRoute.params.subscribe(params=>{
       this.getById(params["id"]);
-      
+      this.getBrandName();
+    this.getDisplacement();
+   
   })
-  
   }
   createCarUpdateForm(){
     this.carUpdateForm = this.formBuilder.group({
@@ -41,8 +39,7 @@ export class CarUpdateComponent implements OnInit {
       dailyPrice:["",Validators.required],
       description:["",Validators.required],
       modelYear:["",Validators.required],
-      minFindexPoint:["",Validators.min(0),Validators.max(1900)]
-
+      minFindexPoint:["",Validators.compose([Validators.min(0),Validators.max(1900), Validators.required])]
     })
   }
   updateCar(){
