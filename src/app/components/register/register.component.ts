@@ -40,6 +40,8 @@ export class RegisterComponent implements OnInit {
       }, responseError=>{
         this.toastrService.error(responseError.error, "Dikkat")
       })
+    }else{
+      this.toastrService.error("Formunuz Eksik!","Dikkat")
     }
   }
 

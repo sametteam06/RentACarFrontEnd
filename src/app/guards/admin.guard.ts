@@ -3,8 +3,6 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { OperationClaimsService } from '../services/operation-claims.service';
-import { UserService } from '../services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +23,5 @@ export class AdminGuard implements CanActivate {
         this.toastrService.info("Admin yetkiniz kaldırılmış veya oturumunuzun süresi dolmuş olabilir.","Lütfen Yetkili Hesap Girişi Yapınız!")
         return false;
       }
-      
   }
-  
 }

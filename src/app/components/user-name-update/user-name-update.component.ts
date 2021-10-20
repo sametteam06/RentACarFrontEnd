@@ -45,6 +45,8 @@ export class UserNameUpdateComponent implements OnInit {
       }, responseError=> {
         this.toastrService.error("Formunuz Eksik", "Dikkat");
       })
+    }else{
+      this.toastrService.error("Formunuz Eksik", "Dikkat")
     }
   }
   delay(ms:number) {

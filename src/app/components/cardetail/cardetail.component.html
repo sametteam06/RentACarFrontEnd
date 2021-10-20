@@ -37,8 +37,10 @@
       <hr>
       <div class="dropdown">
         <a  *ngIf="loginCheck" (click)="rentPage(cardetail.carId)" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"  aria-expanded="false">
-          
           <strong >Hemen Kirala</strong>
+        </a>
+        <a  *ngIf="!loginCheck" routerLink="/login" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"  aria-expanded="false">
+          <strong >Kiralamak için lütfen giriş yapın</strong>
         </a>
         <div *ngIf="rent==true" class="row" role="status">
           <app-rent></app-rent>
