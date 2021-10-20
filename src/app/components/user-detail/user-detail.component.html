@@ -1,0 +1,48 @@
+
+
+<div *ngIf="imageFormActivator" class = "content">
+    <div class = "col-md-12">
+        <div class = "card">
+            <div class = "card-header"><h5 class = "title">Resim Ekle</h5></div>
+            <div class = "card-body">
+                <form [formGroup] = "imageAddForm">
+                    <div class = "mb-3">
+                        <label for = "Image">Resim</label>
+                        <div class = "form-group">
+                            <input type = "file"
+                            id = "Image"
+                            formControlName = "Image"
+                            (change)="setSelectedImage($event)"
+                            class = "form-control"
+                            placeholder = "Resim Ekleyiniz"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class = "card-footer">
+                <button class = "btn btn-fill btn-primary" (click) = "addImage()">Ekle</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="dataLoaded" class="row mt-3 d-flex justify-content-center">
+    <div class="col-md-10 pl-5 ml-5">
+        <div class="row mt-2 pl-5">
+            <div class="card col-md-3 col-lg-4 view overlay hm-zoom card mb-6 mb-4 mt-5 cardd">
+                <img [src]="userImage"
+                    class="card-img-top card-img" style="width: 100%;
+                    height:210px;
+                    border-radius:inherit"/>
+                <div class="card-body">
+                    <h5 class="card-title fs-4" style="text-shadow: 1px 1px 2px grey, 0 0 1em grey, 0 0 0.2em grey;">{{user.firstName + ' ' + user.lastName}}</h5>
+                    <p class="card-text fs-6" style="color:black;text-shadow: 1px 1px 2px grey, 0 0 1em grey, 0 0 0.2em grey ">
+                        {{user.email}}</p>
+                    <a class="btn btn-success" style="width: 270px;" routerLink="/user/update/name">İsim Düzenle</a>
+                    <a class="btn btn-success" style="width: 270px;" routerLink="/user/update/pw">Şifre Değiştir</a>
+                    <a class="btn btn-success" style="width: 270px;" routerLink="/user/update/email">E-Mail Değiştir</a>
+                    <a class="btn btn-success" style="width: 270px;" (click)="createImageForm()">Profil Fotoğrafı Düzenle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -15,64 +15,28 @@ import { ToastrService } from 'ngx-toastr';
 export class CarImageComponent implements OnInit {
   carImages:CarImage[] = [];
   dataLoaded = false;
-  carId:number;
   defaultPath = "https://localhost:44358";
-  closeResult: string = '';
-  deletedImage:CarImage;
-  id:number
+  defaultImage:string;
 
-  constructor(private carImageService:CarImageService, private activatedRoute:ActivatedRoute, private modalService: NgbModal, private toastrService:ToastrService ) { }
+  constructor(private carImageService:CarImageService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
       this.getImages(params["id"])
     })
   }
-  setCarId(id:number){
-    this.carId = id;
-  }
+  
   getImages(carId:number){
     this.carImageService.getImages(carId).subscribe(response=>{
       this.carImages = response.data
+      this.defaultImage = this.defaultPath+response.data[0].imagePath;
       this.dataLoaded = true;
     })
   }
   getPath(){
     return this.defaultPath;
   }
-  open(content:any, id:number) {
-    this.setImageId(id);
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-      this.deleteImage();
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
-  deleteImage(){
-    this.carImageService.getById(this.id).subscribe(response=>{
-      this.deletedImage = response.data;
-      this.carImageService.delete(this.deletedImage).subscribe(response=>{
-        this.toastrService.success(response.message, " Başarılı")
-        }, responseError=> {
-          this.toastrService.error(responseError.message, "Dikkat");
-      })
-    })
-   
-    }
-   
-  
-  setImageId(id:number){
-    this.id=id;
-    console.log(this.id); 
+  setDefaultImage(imageId:number){
+    this.defaultImage = this.defaultPath + this.carImages[imageId].imagePath;
   }
 }

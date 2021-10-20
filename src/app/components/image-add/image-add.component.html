@@ -1,0 +1,27 @@
+<app-cardetail></app-cardetail>
+<div class = "content">
+    <div class = "col-md-12">
+        <div class = "card">
+            <div class = "card-header"><h5 class = "title">Resim Ekle</h5></div>
+            <div class = "card-body">
+                <form [formGroup] = "imageAddForm">
+                    <div class = "mb-3">
+                        <label for = "Image">Resim</label>
+                        <div class = "form-group">
+                            <input type = "file"
+                            id = "Image"
+                            formControlName = "Image"
+                            (change)="setSelectedImage($event)"
+                            class = "form-control"
+                            placeholder = "Resim Ekleyiniz"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class = "card-footer">
+                <button class = "btn btn-fill btn-primary" (click) = "addImage()">Ekle</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
 
@@ -14,9 +16,10 @@ export class BrandComponent implements OnInit {
   brand : Brand;
   dataLoaded = false;
   brandFilterText = "";
+  closeResult="";
 
 
-  constructor(private brandService:BrandService) { }
+  constructor(private brandService:BrandService, private modalService:NgbModal, private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.setCurrentBrand(this.brand);
@@ -38,4 +41,13 @@ export class BrandComponent implements OnInit {
       return "list-group-item"
     }
   }
+  getAllBrandClass(){
+      if(this.currentBrand){
+        return "list-group-item"
+      }else{
+        return "list-group-item active"
+      }
+  }
+  
+
 }

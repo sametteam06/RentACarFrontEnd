@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
+import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
-import { CarImageComponent } from '../car-image/car-image.component';
-import { CardetailComponent } from '../cardetail/cardetail.component';
 
 @Component({
   selector: 'app-car',
@@ -16,15 +15,15 @@ export class CarComponent implements OnInit {
   currentCar:Car;
   dataLoaded = false;
   carFilterText="";
-  constructor(private carService:CarService, private activatedRoute:ActivatedRoute) { }
+  constructor(private carService:CarService, private activatedRoute:ActivatedRoute, private carImageService:CarImageService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
       if(params["brandId"]){
         this.getCarsByBrand(params["brandId"])
-      }else if(params["colorId"]){
-        this.getCarsByColor(params["colorId"])
-      } {
+      }else if(params["displacementId"]){
+        this.getCarsByDisplacement(params["displacementId"])
+      }else {
         this.carGetAll()
       }
     })
@@ -41,9 +40,9 @@ export class CarComponent implements OnInit {
       this.dataLoaded = true;
     })
   }
-  getCarsByColor(id:number){
-    this.carService.getCarsBycolor(id).subscribe(response=>{
-      this.cars = response.data;
+  getCarsByDisplacement(id:number){
+    this.carService.getCarsByDisplacement(id).subscribe(response=>{
+      this.cars = response.data
       this.dataLoaded = true;
     })
   }
@@ -57,6 +56,7 @@ export class CarComponent implements OnInit {
       return "list-group-item"
     }
   }
+  
   
 
 }

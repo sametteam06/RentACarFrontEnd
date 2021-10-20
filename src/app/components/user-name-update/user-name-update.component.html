@@ -1,0 +1,32 @@
+<div class = "content">
+    <div class = "col-md-12">
+        <div class = "card">
+            <div class = "card-header"><h5 class = "title">İsim Değiştir</h5></div>
+            <div class = "card-body">
+                <form [formGroup] = "nameUpdateForm">
+                    <div class = "mb-3">
+                        <label for = "firstName">İsim</label>
+                        <div class = "form-group">
+                            <input type = "text"
+                            id = "firstName"
+                            formControlName = "firstName"
+                            class = "form-control"
+                            placeholder = "{{currentUser?.firstName}}"/>
+                        </div>
+                        <label for = "lastName">Soy İsim</label>
+                        <div class = "form-group">
+                            <input type = "text"
+                            id = "lastName"
+                            formControlName = "lastName"
+                            class = "form-control"
+                            placeholder = "{{currentUser?.lastName}}"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class = "card-footer">
+                <button class = "btn btn-fill btn-primary" (click) = "updateName()" routerLink = "/user/{{currentUser?.id}}"  >Güncelle</button>
+            </div>
+        </div>
+    </div>
+</div>

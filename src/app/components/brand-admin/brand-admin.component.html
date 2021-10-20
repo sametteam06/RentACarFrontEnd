@@ -1,0 +1,47 @@
+<table class = "table">
+    <thead>
+        <tr>
+            <th>Markalar</th>
+        </tr>
+    </thead>
+    <div *ngIf="dataLoaded==false" class="spinner-grow text-secondary" role="status">
+        <span class="visually-hidden" >Loading...</span>
+    </div>
+    <div class="mb-3">
+        <input type="text"  [(ngModel)]="brandFilterText"
+        class="form-control" placeholder="Marka Ara">
+        
+    </div>
+    <tr class = "tr" >
+        <td class = "td">
+            <li 
+                (click)="setCurrentBrand(brand)"
+                [class]="getAllBrandClass()">
+                Tüm Markalar</li>
+            <li 
+                (click)="setCurrentBrand(brand)" 
+                *ngFor= "let brand of brands |brandFilter:brandFilterText | orderBy:'brandName'"
+                [class]="getCurrentBrandClass(brand)">
+                {{brand.brandName}}
+            </li>
+        </td>
+    </tr>
+</table>
+<td><button  type="button" class="btn btn-success" routerLink = "/brands/add" >Marka Ekle</button></td>
+<td><button  type="button" class="btn btn-primary" *ngIf="currentBrand" routerLink = "/brands/update/{{currentBrand.id}}" >Markayı Düzenle</button></td>
+<td><button  type="button" class="btn btn-danger" *ngIf="currentBrand" (click)="open(mymodal)" >Markayı Sil</button></td>
+  <ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Markayı Sil</h4>
+    </div>
+    <div class="modal-body">
+      Markayı silmek istediğinizden emin misiniz?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Sil</button>
+      <button type="button" class="btn btn-success" aria-label="Close" (click)="modal.dismiss('Cross click')">İptal</button>
+    </div>
+  </ng-template>
+
+
+

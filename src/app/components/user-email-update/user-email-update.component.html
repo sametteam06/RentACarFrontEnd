@@ -1,0 +1,24 @@
+<div class = "content">
+    <div class = "col-md-12">
+        <div class = "card">
+            <div class = "card-header"><h5 class = "title">E-Mail Değiştir</h5></div>
+            <div class = "card-body">
+                <form [formGroup] = "emailUpdateForm">
+                    <div class = "mb-3">
+                        <label for = "email">E-Mail</label>
+                        <div class = "form-group">
+                            <input type = "text"
+                            id = "email"
+                            formControlName = "email"
+                            class = "form-control"
+                            placeholder = "{{currentUser?.email}}"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class = "card-footer">
+                <button class = "btn btn-fill btn-primary" (click) = "updateEmail()" routerLink = "/user/{{currentUser?.id}}"  >Güncelle</button>
+            </div>
+        </div>
+    </div>
+</div>

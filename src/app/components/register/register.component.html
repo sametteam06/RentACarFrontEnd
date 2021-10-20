@@ -1,0 +1,34 @@
+<main class="form-signin">
+    <form [formGroup] = "registerForm">
+      <img class="mb-4" [src]="defaultImageUrl" alt="" width="72" height="57">
+      <h1 class="h3 mb-3 fw-normal">Üyelik Bilgilerini Giriniz</h1>
+  
+      <div class="form-floating">
+        <input type="email" class="form-control" formControlName = "email" id="floatingInput">
+        <label for="floatingInput">E-Mail Adresi Giriniz</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" formControlName = "password" class="form-control" id="floatingPassword">
+        <label for="floatingPassword">Şifre Giriniz</label>
+      </div>
+      <div class="form-floating">
+        <input type="email" class="form-control" formControlName = "firstName" id="floatingInput">
+        <label for="floatingInput">Adınızı Giriniz</label>
+      </div>
+      <div class="form-floating">
+        <input type="email" class="form-control" formControlName = "lastName" id="floatingInput">
+        <label for="floatingInput">Soy Adınızı Giriniz</label>
+      </div>
+      
+  
+      <!-- <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div> -->
+      <button class="w-50 btn btn-lg btn-success" type="submit" routerLink="/login">Giriş Yap</button>
+      <button class="w-50 btn btn-lg btn-primary" type="submit" (click)="register()">Kayıt Ol</button>
+
+    </form>
+  </main>
+  

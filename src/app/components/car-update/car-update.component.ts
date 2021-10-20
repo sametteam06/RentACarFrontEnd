@@ -43,18 +43,15 @@ export class CarUpdateComponent implements OnInit {
     })
   }
   updateCar(){
-    console.log("deneme1")
     if(this.carUpdateForm.valid){
       let carModel = Object.assign({}, this.carUpdateForm.value);
       carModel.id = this.currentCar.id;
-      console.log(carModel);
       this.carService.update(carModel).subscribe(response=>{
         this.toastrService.success(response.message, " Başarılı")
       }, responseError=> {
         this.toastrService.error(responseError.error.message, "Dikkat");
       })
     }else{
-      console.log("deneme")
     }
   }
   getDisplacement(){

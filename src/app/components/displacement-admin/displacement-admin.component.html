@@ -1,0 +1,45 @@
+
+        <table class = "table">
+            <thead>
+                <tr>
+                    <th>Motor Hacmi</th>
+                </tr>
+            </thead>
+            <div *ngIf="dataLoaded==false" class="spinner-grow text-secondary" role="status">
+                <span class="visually-hidden" >Loading...</span>
+            </div>
+            <div class="mb-3">
+                <input type="text"  [(ngModel)]="displacementFilterText"
+                class="form-control" placeholder="Motor Hacmi Giriniz">
+                
+            </div>
+            <tr class = "tr" >
+                <td class = "td">
+                    <li (click)="setCurrentDisplacement(displacement)"
+                        [class]="getAllDisplacementClass()">
+                        Tüm Motorlar</li>
+                    <li 
+                        (click)="setCurrentDisplacement(displacement)" 
+                        *ngFor= "let displacement of displacements |displacementFilter:displacementFilterText |orderBy:'engineDisplacement'"
+                        [class]="getCurrentDisplacementClass(displacement)">
+                        {{displacement.engineDisplacement}} cc
+                    </li>
+                </td>
+            </tr>
+        </table>
+     
+            <td><button  type="button" class="btn btn-success" routerLink = "/displacements/add" >Motor Hacmi Ekle</button></td>
+            <td><button  type="button" class="btn btn-primary" *ngIf="currentDisplacement" routerLink = "/displacements/update/{{currentDisplacement.id}}" >Motor Hacmi Düzenle</button></td>
+            <td><button  type="button" class="btn btn-danger" *ngIf="currentDisplacement" (click)="open(mymodal)" >Motor Hacmi Sil</button></td>
+            <ng-template #mymodal let-modal>
+                <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Motor Hacmi Sil</h4>
+                </div>
+                <div class="modal-body">
+                    Motor Hacmini silmek istediğinizden emin misiniz?
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Sil</button>
+                <button type="button" class="btn btn-success" aria-label="Close" (click)="modal.dismiss('Cross click')">İptal</button>
+                </div>
+            </ng-template>

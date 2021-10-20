@@ -27,8 +27,9 @@ export class RentalService {
     let newPath = this.apiUrl + "rentals/add";
     return this.httpClient.post<ResponseModel>(newPath, this.rentalCar)
   }
-  setDates(rentDate:Date, returnDate:Date){
-    this.rentalCar = {carId:this.carId, customerId:2002, rentDate:rentDate, returnDate:returnDate};
+  setDates(rentDate:Date, returnDate:Date, id:number){
+    this.rentalCar = {carId:this.carId, userId:id, rentDate:rentDate, returnDate:returnDate};
+    console.log(this.rentalCar);
   }
   setCarId(carId:number){
     this.carId = carId;

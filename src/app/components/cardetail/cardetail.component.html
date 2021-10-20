@@ -1,29 +1,50 @@
-<app-car-image></app-car-image>
-<table class = "table">
-  <thead>
-      <tr>
-          <th>Car Id</th>
-          <th>Car Name</th>
-          <th>Brand Name</th>
-          <th>Color Name</th>
-          <th>Daily Price</th>
 
-      </tr>
-  </thead>
-  <div *ngIf="dataLoaded==false" class="spinner-grow text-secondary" role="status">
-      <span class="visually-hidden" >Loading...</span>
+
+<div class = "row">
+  <div class = "col-md-8">
+    <app-car-image></app-car-image>
   </div>
-  <tr class = "tr">
-      <td class = "td"><li class="list-group-item">{{cardetail?.carId}}</li></td>
-      <td class = "td"><li class="list-group-item">{{cardetail?.carName}}</li></td>
-      <td class = "td"><li class="list-group-item">{{cardetail?.brandName}}</li></td>
-      <td class = "td"><li class="list-group-item">{{cardetail?.colorName}}</li></td>
-      <td class = "td"><li class="list-group-item">{{cardetail?.dailyPrice}}</li></td>
-      <td class = "td"><li class="list-group-item"><span (click)="rentPage(cardetail.carId)"  class="badge bg-secondary">Kirala</span></li></td>
-  </tr>
-</table>
-
-<div *ngIf="rent==true" class="row" role="status">
-    <app-rent></app-rent>
+  <div class = "col-md-4">
+    <div *ngIf="dataLoaded==false" class="spinner-grow text-secondary" role="status">
+      <span class="visually-hidden" >Loading...</span>
+    </div>
+    <div *ngIf="dataLoaded==true" class="d-flex flex-column flex-shrink-0 p-3 bg-light" >
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        <span class="fs-4">{{cardetail?.brandName}}</span>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link link-dark" aria-current="page">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+            {{cardetail?.carName + ' '+ cardetail?.engineDisplacement + ' cc'}}
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link link-dark">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            {{cardetail?.modelYear + ' Model'}}
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link link-dark">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+            {{ 'Günlük Ücreti ' + cardetail?.dailyPrice + ' TL.'}}
+          </a>
+        </li>
+      </ul>
+      <hr>
+      <div class="dropdown">
+        <a  *ngIf="loginCheck" (click)="rentPage(cardetail.carId)" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"  aria-expanded="false">
+          
+          <strong >Hemen Kirala</strong>
+        </a>
+        <div *ngIf="rent==true" class="row" role="status">
+          <app-rent></app-rent>
+      </div> 
+      </div>
+    </div>  
+    
+  </div>
 </div>
-

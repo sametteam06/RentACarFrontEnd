@@ -1,0 +1,71 @@
+<table class = "table">
+    <thead>
+        <tr>
+            <th>Kullanıcı E-Mail Adresi</th>
+            <th>Kullanıcı Yetkileri</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody
+    *ngFor= "let uoc of usersAllClaims | orderBy:'userEmail'| orderBy:'uoc.operationClaimName'">
+        <td class = "td"><li class="list-group-item">{{uoc.userEmail}}</li></td>
+        <td  class = "td">
+          <li *ngIf="uoc.operationClaimName[0]!=null; else noClaim" class="list-group-item">{{uoc.operationClaimName}}</li>
+        </td>
+        <button type="button" class="btn btn-primary" (click)="addModal(addClaim, uoc.userId)">Yetki Ekle</button>
+        <button type="button" class="btn btn-danger" (click)="deleteModal(deleteClaim, uoc.userId)">Yetki Kaldır</button>
+    </tbody>
+</table>
+<ng-template #noClaim>
+  <li class="list-group-item">{{ifNoClaim}}</li>
+</ng-template>
+
+<ng-template #addClaim let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Yetki Ekle</h4>
+  </div>
+  <div class="modal-body">
+    Lütfen Eklemek İstediğiniz Yetkileri Seçiniz
+  </div>
+  <form (ngSubmit)="addSubmit()">
+    <div class = "modal-body" >
+      <div class="form-group">
+        <div *ngFor="let claim of addableClaims | orderBy:'name'">
+          <label [hidden]="claim.id==0">
+            <input type="checkbox" [value]="claim.id" (change)="checkBoxChange($event)"  />
+            {{claim.name}}
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class = "modal-footer">
+      <button class="btn btn-primary" type="submit" (click)="modal.close('Save click')" >Ekle</button>
+      <button type="button" class="btn btn-success" aria-label="Close" (click)="modal.dismiss('Cross click')">İptal</button>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #deleteClaim let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Yetki Kaldır</h4>
+  </div>
+  <div class="modal-body">
+    Lütfen Kaldırmak İstediğiniz Yetkileri Seçiniz
+  </div>
+  <form (ngSubmit)="deleteSubmit()">
+    <div class = "modal-body" >
+      <div class="form-group">
+        <div *ngFor="let claimName of userAllClaims.operationClaimName | orderBy:'userAllClaims.operationClaimName[i]';let i = index">
+          <label [hidden]="userAllClaims.operationClaimId[i]==null">
+            <input type="checkbox" [value]="userAllClaims.operationClaimId[i]" (change)="checkBoxChange($event)"  />
+            {{claimName}}
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class = "modal-footer">
+      <button class="btn btn-danger" type="submit" (click)="modal.close('Save click')" >Sil</button>
+      <button type="button" class="btn btn-success" aria-label="Close" (click)="modal.dismiss('Cross click')">İptal</button>
+    </div>
+  </form>
+</ng-template>

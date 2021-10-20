@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ColorComponent } from './color.component';
+import { UserEmailUpdateComponent } from './user-email-update.component';
 
-describe('ColorComponent', () => {
-  let component: ColorComponent;
-  let fixture: ComponentFixture<ColorComponent>;
+describe('UserEmailUpdateComponent', () => {
+  let component: UserEmailUpdateComponent;
+  let fixture: ComponentFixture<UserEmailUpdateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ColorComponent ]
+      declarations: [ UserEmailUpdateComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ColorComponent);
+    fixture = TestBed.createComponent(UserEmailUpdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

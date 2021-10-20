@@ -1,0 +1,47 @@
+<td><button  type="button" class="btn btn-success" routerLink = "/cars/add" >Araba Ekle</button></td>
+<td><button *ngIf="currentCarDetail" type="button" class="btn btn-primary" routerLink = "/cars/update/{{currentCarDetail.carId}}" >Araba Bilgilerini Güncelle</button></td>
+<td><button *ngIf="currentCarDetail"  type="button" class="btn btn-primary" routerLink = "/cars/images/add/{{currentCarDetail.carId}}" >Resim Ekle</button></td>
+<td><button *ngIf="currentCarDetail"  type="button" class="btn btn-danger" (click)="open(mymodal, currentCarDetail.carId)" >Arabayı Sil</button></td>
+
+      
+      
+<table class = "table">
+  <thead>
+      <tr>
+          <th>Car Id</th>
+          <th>Car Name</th>
+          <th>Brand Name</th>
+          <th>Engine Displacement</th>
+          <th>Daily Price</th>
+          <th>Model Year</th>
+
+      </tr>
+  </thead>
+ 
+
+  <div *ngIf="dataLoaded==false" class="spinner-grow text-secondary" role="status">
+      <span class="visually-hidden" >Loading...</span>
+  </div>
+  <tr class = "tr" *ngFor="let carDetail of carDetails |orderBy:'carId'">
+    <td class = "td"><li (click)="setCurrentCarDetail(carDetail)" [class]="getCurrentCarDetailClass(carDetail)">{{carDetail.carId}}</li></td>
+    <td class = "td"><li (click)="setCurrentCarDetail(carDetail)" [class]="getCurrentCarDetailClass(carDetail)">{{carDetail.carName}}</li></td>
+    <td class = "td"><li (click)="setCurrentCarDetail(carDetail)" [class]="getCurrentCarDetailClass(carDetail)">{{carDetail.brandName}}</li></td>
+    <td class = "td"><li (click)="setCurrentCarDetail(carDetail)" [class]="getCurrentCarDetailClass(carDetail)">{{carDetail.engineDisplacement}} cc</li></td>
+    <td class = "td"><li (click)="setCurrentCarDetail(carDetail)" [class]="getCurrentCarDetailClass(carDetail)">{{carDetail.dailyPrice}}</li></td>
+    <td class = "td"><li (click)="setCurrentCarDetail(carDetail)" [class]="getCurrentCarDetailClass(carDetail)">{{carDetail.modelYear}}</li></td>
+  </tr>
+</table>
+  <ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Arabayı Sil</h4>
+    </div>
+    <div class="modal-body">
+        Arabayı silmek istediğinizden emin misiniz?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Sil</button>
+      <button type="button" class="btn btn-success" aria-label="Close" (click)="modal.dismiss('Cross click')">İptal</button>
+    </div>
+  </ng-template>
+
+

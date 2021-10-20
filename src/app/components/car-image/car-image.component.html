@@ -1,21 +1,16 @@
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<div *ngIf="dataLoaded==false" class="spinner-grow text-secondary" role="status">
+  <span class="visually-hidden" >Loading...</span>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div  class="imageBoxBig">
+      <img [src]="defaultImage" class="card-img-top card-img" style="border-radius:inherit"/>
     </div>
-    <div *ngFor="let src of carImages" class="carousel-inner">
-        <img [src]="getPath()+src.imagePath" class="d-block w-100" alt="...">
-        {{getPath()}}{{src.imagePath}}
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
-  <div class="row">asdasd</div>
-<div class="row"><h5 *ngIf="carId">{{carId}}</h5></div>
+</div>
+<div class="row">
+  <div *ngFor="let src of carImages; let i = index" class = "col-md-2" (click)="setDefaultImage(i)">
+    <div class="imageBoxSmall"><img [src]="getPath()+src.imagePath" class="card-img-top card-img" style="width: 100%; border-radius:inherit"/></div>
+  </div>
+</div>

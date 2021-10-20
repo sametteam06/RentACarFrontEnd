@@ -1,0 +1,24 @@
+<div class = "content">
+    <div class = "col-md-12">
+        <div class = "card">
+            <div class = "card-header"><h5 class = "title">Motor Hacmi Düzenle</h5></div>
+            <div class = "card-body">
+                <form [formGroup] = "displacementUpdateForm">
+                    <div class = "mb-3">
+                        <label for = "engineDisplacement">Motor Hacmi</label>
+                        <div class = "form-group">
+                            <input type = "number"
+                            id = "engineDisplacement"
+                            formControlName = "engineDisplacement"
+                            class = "form-control"
+                            placeholder = "{{currentDisplacement?.engineDisplacement}} cc"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class = "card-footer">
+                <button class = "btn btn-fill btn-primary" (click) = "updateDisplacement()" routerLink = "/displacements/update/{{currentDisplacement?.id}}"  >Güncelle</button>
+            </div>
+        </div>
+    </div>
+</div>

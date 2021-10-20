@@ -2,30 +2,50 @@
 <div class="padding">
     <div class="row">
         <div class="container-fluid d-flex justify-content-center">
-            <div class="col-sm-8 col-md-6">
+            <div >
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-md-6"> <span>CREDIT/DEBIT CARD PAYMENT</span> </div>
+                            <div class="col-md-6"> <span>Kredi Kartı İle Ödeme</span> </div>
                             <div class="col-md-6 text-right" style="margin-top: -5px;"> <img src="https://img.icons8.com/color/36/000000/visa.png"> <img src="https://img.icons8.com/color/36/000000/mastercard.png"> <img src="https://img.icons8.com/color/36/000000/amex.png"> </div>
                         </div>
                     </div>
-                    <div class="card-body" style="height: 350px">
-                        <div class="form-group"> <label for="cc-number" class="control-label" >CARD NUMBER</label> <input id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required> </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group"> <label for="cc-exp" class="control-label">CARD EXPIRY</label> <input id="cc-exp" type="month" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required> </div>
+                    <form [formGroup] = "paymentForm">
+                        <div class="card-body" style="height: 350px">
+                            <div class="form-group">
+                                <label for="cc-number" class="control-label" >Kart Numarası</label> 
+                                <input formControlName = "cardNumber" id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="Kart Numarasını Giriniz" required>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group"> <label for="cc-cvc" class="control-label">CARD CVC</label> <input id="cc-cvc" type="password" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="••••" required> </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cc-exp" class="control-label">Kartın Geçerlilik Tarihi</label> 
+                                        <input formControlName = "valid" id="cc-exp" type="month" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="Geçerlilik Tarihini Giriniz" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"> 
+                                        <label for="cc-number2" class="control-label">CCV</label> 
+                                        <input formControlName = "cVV" id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="CVV Numarasını Giriniz" required>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="form-group">
+                                <label for="numeric" class="control-label" >Kart Sahibinin Adı</label> 
+                                <input formControlName = "name" type="text" class="input-lg form-control" placeholder="Kart Sahibinin Adını Giriniz"> 
+                            </div>
+                            <div class="checkbox mb-3">
+                                <label>
+                                <input formControlName = "rememberMe"  type="checkbox" value="remember-me"> Kart Bilgilerini Hatırla
+                                </label>
+                                <div *ngIf="showCard" class="form-group"> <input value="Kayıtlı Kart Bilgilerini Getir" (click) = "updatePaymentForm()" type="button" class="btn btn-primary btn-lg form-control" style="font-size: .8rem;"> </div>
+                            </div>
+                            <div class="form-group"> <input value="Ödeme Yap" (click) = "payment()" type="button" class="btn btn-success btn-lg form-control" style="font-size: .8rem;"> </div>
+                            
                         </div>
-                        <div class="form-group"> <label for="numeric" class="control-label">CARD HOLDER NAME</label> <input type="text" class="input-lg form-control"> </div>
-                        <div class="form-group"> <input value="MAKE PAYMENT" (click) = "payment()" type="button" class="btn btn-success btn-lg form-control" style="font-size: .8rem;"> </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<h5>{{message}}</h5>
