@@ -24,6 +24,7 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 import { UserEmailUpdateComponent } from './components/user-email-update/user-email-update.component';
 import { UserNameUpdateComponent } from './components/user-name-update/user-name-update.component';
 import { UserPwUpdateComponent } from './components/user-pw-update/user-pw-update.component';
+import { AdminGuard } from './guards/admin.guard';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
@@ -47,7 +48,7 @@ const routes: Routes = [
   {path:"user/update/pw", component:UserPwUpdateComponent, canActivate:[LoginGuard]},
   {path:"user/update/email", component:UserEmailUpdateComponent, canActivate:[LoginGuard]},
   {path:"admin/authentications", component:OperationClaimsComponent},
-  {path:"admin", component:AdminComponent},
+  {path:"admin", component:AdminComponent, canActivate:[AdminGuard]},
   {path:"admin/cars", component:CarAdminComponent},
   {path:"admin/brands", component:BrandAdminComponent},
   {path:"admin/displacements", component:DisplacementAdminComponent},

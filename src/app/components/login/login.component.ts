@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
         this.token = response.data;
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("mail", loginModel.email);
+        this.authService.authControl();
         this.toastrService.success(response.message, "Başarılı")
       }, responseError=>{
         this.toastrService.error(responseError.error, "Giriş Yapılamadı")
