@@ -50,8 +50,6 @@ export class UserPwUpdateComponent implements OnInit {
         this.toastrService.error("Formunuz Eksik", "Dikkat");
       })
       }
-      
     }
   }
-
 }

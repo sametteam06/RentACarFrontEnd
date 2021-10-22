@@ -12,7 +12,7 @@ import { UserService } from './user.service';
 })
 export class AuthService {
 
-  apiUrl = "https://localhost:44358/api/"
+  apiUrl = "http://rentacarproject.abdulsametozdemir.com/api/"
 
   constructor(private httpClient:HttpClient, private userService:UserService, private operationClaimService:OperationClaimsService) { }
 

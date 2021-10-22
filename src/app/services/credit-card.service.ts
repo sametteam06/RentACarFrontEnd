@@ -10,7 +10,7 @@ import { ResponseModel } from '../models/responseModel';
 })
 export class CreditCardService {
 
-  apiUrl = "https://localhost:44358/api/"
+  apiUrl = "http://rentacarproject.abdulsametozdemir.com/api/"
 
   constructor(private httpClient:HttpClient) { }
   

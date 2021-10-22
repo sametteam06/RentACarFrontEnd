@@ -14,7 +14,7 @@ export class UserService {
 
   constructor(private httpClient:HttpClient) { }
 
-  apiUrl = "https://localhost:44358/api/"
+  apiUrl = "http://rentacarproject.abdulsametozdemir.com/api/"
 
   getUserByMail(mail:string|null):Observable<itemResponseModel<UserDetail>>{
     let newPath = this.apiUrl + "users/getbymail?mail="+mail

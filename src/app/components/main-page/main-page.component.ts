@@ -37,10 +37,10 @@ export class MainPageComponent implements OnInit {
   setImagePath(carId:number){
     for (let i = 0; i < this.carMainPageDtos.length; i++){
       if(this.carMainPageDtos[i].carId == carId){
-        return "https://localhost:44358/"+this.carMainPageDtos[i].imagePath;
+        return "http://rentacarproject.abdulsametozdemir.com/"+this.carMainPageDtos[i].imagePath;
       }
     }
-    return "https://localhost:44358/images/default-image.jpg"
+    return "http://rentacarproject.abdulsametozdemir.com/images/default-image.jpg"
   }
   getCarsByBrand(id:number){
     this.carService.getCarsForMainPageByBrandId(id).subscribe(response=>{

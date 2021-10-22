@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CarImageComponent implements OnInit {
   carImages:CarImage[] = [];
   dataLoaded = false;
-  defaultPath = "https://localhost:44358";
+  defaultPath = "http://rentacarproject.abdulsametozdemir.com/";
   defaultImage:string;
 
   constructor(private carImageService:CarImageService, private activatedRoute:ActivatedRoute) { }

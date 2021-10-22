@@ -8,7 +8,7 @@ import { itemResponseModel } from '../models/itemResponseModel';
   providedIn: 'root'
 })
 export class CardetailService {
-  apiUrl = "https://localhost:44358/api/"
+  apiUrl = "http://rentacarproject.abdulsametozdemir.com/api/"
 
   constructor(private httpClient:HttpClient) { }
   getByCarId(id:number):Observable<itemResponseModel<CarDetail>>{

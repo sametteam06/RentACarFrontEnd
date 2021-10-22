@@ -3,15 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { listResponseModel } from '../models/listResponseModel';
 import { Rental } from '../models/rental';
+import { RentalDto } from '../models/rentalDto';
 import { ResponseModel } from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentalService {
-  apiGetAllUrl = "https://localhost:44358/api/rentals/getall"
-  apiGetDetailUrl = "https://localhost:44358/api/rentals/getdetail"
-  apiUrl = "https://localhost:44358/api/"
+  apiGetAllUrl = "http://rentacarproject.abdulsametozdemir.com/api/rentals/getall"
+  apiGetDetailUrl = "http://rentacarproject.abdulsametozdemir.com/api/rentals/getdetail"
+  apiUrl = "http://rentacarproject.abdulsametozdemir.com/api/"
   result:ResponseModel
   rentalCar:Rental;
   carId:number;
@@ -20,8 +21,8 @@ export class RentalService {
   rentalGetAll():Observable<listResponseModel<Rental>>{
     return this.httpClient.get<listResponseModel<Rental>>(this.apiGetAllUrl);
   }
-  rentalGetDetail():Observable<listResponseModel<Rental>>{
-    return this.httpClient.get<listResponseModel<Rental>>(this.apiGetDetailUrl);
+  rentalGetDetail():Observable<listResponseModel<RentalDto>>{
+    return this.httpClient.get<listResponseModel<RentalDto>>(this.apiGetDetailUrl);
   }
   addRental(): Observable<ResponseModel> {
     let newPath = this.apiUrl + "rentals/add";

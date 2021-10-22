@@ -14,7 +14,7 @@ import { UsersAllClaims } from '../models/UsersAllClaims';
 })
 export class OperationClaimsService {
 
-  apiUrl = "https://localhost:44358/api/"
+  apiUrl = "http://rentacarproject.abdulsametozdemir.com/api/"
   constructor(private httpClient:HttpClient) { }
   
 

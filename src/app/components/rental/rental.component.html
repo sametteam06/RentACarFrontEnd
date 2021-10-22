@@ -1,10 +1,11 @@
 <table class = "table">
     <thead>
         <tr>
-            <th>Araba Id</th>
-            <th>Müşteri Id</th>
+            <th>Kiralanan Araç</th>
             <th>Kiralama Tarihi</th>
             <th>Teslim Tarihi</th>
+            <th>Müşteri Adı</th>
+            <th>Müşteri E-Posta Adresi</th>
         </tr>
         
     </thead>
@@ -12,9 +13,11 @@
         <span class="visually-hidden" >Loading...</span>
     </div>
     <tr class = "tr" *ngFor= "let rental of rentals">
-        <td class = "td"><li class="list-group-item">{{rental.carId}}</li></td>
-        <td class = "td"><li class="list-group-item">{{rental.userId}}</li></td>
+        <td clas s= "td"><li class="list-group-item">{{rental.brandName}} {{rental.carDescription}} {{rental.displacement}} cc</li></td>
         <td class = "td"><li class="list-group-item">{{rental.rentDate}}</li></td>
         <td class = "td"><li class="list-group-item">{{rental.returnDate}}</li></td>
+        <td class = "td"><li class="list-group-item">{{rental.userName}}</li></td>
+        <td class = "td"><li class="list-group-item">{{rental.userEmail}}</li></td>
+
     </tr>
 </table>

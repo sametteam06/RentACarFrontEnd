@@ -11,7 +11,7 @@ import { ResponseModel } from '../models/responseModel';
   providedIn: 'root'
 })
 export class BrandService {
-  apiUrl = "https://localhost:44358/api/"
+  apiUrl = "http://rentacarproject.abdulsametozdemir.com/api/"
 
   constructor(private httpClient:HttpClient) { }
   brandGetAll():Observable<listResponseModel<Brand>>{

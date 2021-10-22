@@ -10,7 +10,7 @@ import { ResponseModel } from '../models/responseModel';
   providedIn: 'root'
 })
 export class DisplacementService {
-  apiUrl = "https://localhost:44358/api/"
+  apiUrl = "http://rentacarproject.abdulsametozdemir.com/api/"
 
   constructor(private httpClient:HttpClient) { }
   getAll():Observable<listResponseModel<Displacement>>{

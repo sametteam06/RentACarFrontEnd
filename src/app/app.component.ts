@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  defaultImageUrl = "https://localhost:44358/images/default-image.jpg"
-  title = 'RentACar';
+  defaultImageUrl = "http://www.rentacarproject.abdulsametozdemir.com/images/default-image.jpg"
+  title = 'Deneme';
+
+  constructor(private titleService:Title) {
+    this.titleService.setTitle("MotoRentaL");
+  }
 }

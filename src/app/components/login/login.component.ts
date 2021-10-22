@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  defaultImageUrl = "https://localhost:44358/images/default-image.jpg"
+  defaultImageUrl = "http://rentacarproject.abdulsametozdemir.com/images/default-image.jpg"
 
   loginForm:FormGroup;
   token:TokenModel;

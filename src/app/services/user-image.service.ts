@@ -10,7 +10,7 @@ import { UserImage } from '../models/userImage';
 })
 export class UserImageService {
 
-  apiUrl = "https://localhost:44358/api/"
+  apiUrl = "http://rentacarproject.abdulsametozdemir.com/api/"
 
   constructor(private httpClient:HttpClient) { }
 

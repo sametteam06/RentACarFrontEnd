@@ -31,7 +31,7 @@ export class UserDetailComponent implements OnInit {
       this.dataLoaded = response.success;
       this.user = response.data;
       this.userImageService.getByUserId(this.user.id).subscribe(response=>{
-        this.userImage = "https://localhost:44358"+response.data.imagePath;
+        this.userImage = "http://rentacarproject.abdulsametozdemir.com/"+response.data.imagePath;
       })
     })
   }

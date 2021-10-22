@@ -46,6 +46,7 @@ import { BrandAdminComponent } from './components/brand-admin/brand-admin.compon
 import { DisplacementAdminComponent } from './components/displacement-admin/displacement-admin.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     CarAdminComponent,
     BrandAdminComponent,
     DisplacementAdminComponent,
-    MainPageComponent
+    MainPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

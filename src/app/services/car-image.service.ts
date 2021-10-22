@@ -11,7 +11,7 @@ import { itemResponseModel } from '../models/itemResponseModel';
 })
 export class CarImageService {
 
-  apiUrl = "https://localhost:44358/api/"
+  apiUrl = "http://rentacarproject.abdulsametozdemir.com/api/"
   constructor(private httpClient:HttpClient) { }
   getImages(carId:number):Observable<listResponseModel<CarImage>>{
     let newPath = this.apiUrl + "carimages/getbycarid?id="+carId

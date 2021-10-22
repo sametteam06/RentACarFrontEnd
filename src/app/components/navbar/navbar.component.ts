@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  defaultImageUrl = "https://localhost:44358/images/default-image.jpg"
+  defaultImageUrl = "http://rentacarproject.abdulsametozdemir.com/images/default-image.jpg"
   userImage:string;
 
   userLoginCheck:boolean;
@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
       this.userService.getUserByMail(mail).subscribe(response=>{
         this.user = response.data;
         this.userImageService.getByUserId(this.user.id).subscribe(response=>{
-          this.userImage = "https://localhost:44358"+response.data.imagePath;
+          this.userImage = "http://rentacarproject.abdulsametozdemir.com/"+response.data.imagePath;
         })
       })
     }

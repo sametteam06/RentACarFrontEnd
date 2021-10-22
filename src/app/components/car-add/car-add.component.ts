@@ -32,7 +32,7 @@ export class CarAddComponent implements OnInit {
       dailyPrice:["",Validators.required],
       description:["",Validators.required],
       modelYear:["",Validators.required],
-      minFindexPoint:["",Validators.min(0),Validators.max(1900)]
+      minFindexPoint:["",Validators.compose([Validators.min(0),Validators.max(1900), Validators.required])]
 
     })
   }
